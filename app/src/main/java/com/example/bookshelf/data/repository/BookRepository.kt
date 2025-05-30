@@ -8,7 +8,7 @@ import com.example.bookshelf.data.models.BookList
 
 interface BookRepository {
     suspend fun getBookData(id: String) : Book
-    suspend fun getBooksList(query: String) : BookList
+    suspend fun getBooksList(query: String, qty: Int) : BookList
 }
 
 class NetworkBookDataRepository(
@@ -16,6 +16,5 @@ class NetworkBookDataRepository(
     private val listBooksApiService: ListBooksApiService
 ) : BookRepository {
     override suspend fun getBookData(id: String): Book = bookApiService.getBookData(id)
-    override suspend fun getBooksList(query: String): BookList = listBooksApiService.getBooksList(query)
-
+    override suspend fun getBooksList(query: String, qty: Int): BookList = listBooksApiService.getBooksList(query, qty)
 }

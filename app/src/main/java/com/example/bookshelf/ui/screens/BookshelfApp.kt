@@ -46,8 +46,8 @@ fun BookshelfApp(
             modifier = Modifier.padding(innerPadding)
         ) {
             composable(route = BookshelfScreensApp.Search.name) {
-                SearchBookScreen(onButtonSearchClick = {
-                    bookViewModel.saveRequestGet(it)
+                SearchBookScreen(onButtonSearchClick = {query, author, quantity ->
+                    bookViewModel.saveRequestGet(query, author, quantity)
                     navController.navigate(BookshelfScreensApp.ListBook.name)
                 }
                 )
@@ -59,8 +59,7 @@ fun BookshelfApp(
                     onImageClick = {
                         bookViewModel.saveBookId(it)
                         navController.navigate(BookshelfScreensApp.Book.name)
-                    },
-                    modifier = Modifier)
+                    })
             }
 
             composable(route = BookshelfScreensApp.Book.name) {

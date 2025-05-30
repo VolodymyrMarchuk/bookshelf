@@ -5,6 +5,7 @@ import com.example.bookshelf.data.models.BookList
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
+import retrofit2.http.QueryMap
 
 interface BookApiService {
     @GET("volumes/{id}")
@@ -16,6 +17,7 @@ interface BookApiService {
 interface ListBooksApiService {
     @GET("volumes")
     suspend fun getBooksList(
-        @Query("q") searchQuery: String
+        @Query("q", encoded = true) searchQuery: String,
+        @Query("maxResults") qty: Int
     ) : BookList
 }

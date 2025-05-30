@@ -34,9 +34,9 @@ fun SingleBookScreen(
         is BookUiState.Loading -> {}
         is BookUiState.Success -> {
             SingleBookCard(
-                title = singleBookUiState.book.volumeInfo.title!!,
-                description = singleBookUiState.book.volumeInfo.description!!,
-                linkImage = singleBookUiState.book.volumeInfo.imageLinks.thumbnail!!.replace("http://", "https://")
+                title = singleBookUiState.book.volumeInfo!!.title!!,
+                description = singleBookUiState.book.volumeInfo!!.description!!,
+                linkImage = singleBookUiState.book.volumeInfo!!.imageLinks!!.thumbnail!!.replace("http://", "https://")
             )
         }
         is BookUiState.Error -> {
